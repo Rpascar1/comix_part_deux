@@ -3,6 +3,7 @@ class Comedian < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
     devise :database_authenticatable, :registerable,
            :recoverable, :rememberable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
+
            has_many :comedian_sets
            has_many :jokes, through: :comedian_sets
            has_many :shows
