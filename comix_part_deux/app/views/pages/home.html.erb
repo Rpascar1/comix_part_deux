@@ -1,6 +1,7 @@
-<h1>Homepage test</h1>
+<h1>Welcome to the Comedy Vault - Start creating comedy gold</h1>
 <% if current_comedian %>
-<%= current_comedian.inspect %>
+<div> <%= current_comedian.name%></div>
+<%= image_tag(current_comedian.image)%>
 <%end%>
 <% unless current_comedian %>
   <%= link_to "Sign in with Facebook", comedian_facebook_omniauth_authorize_path %>
