@@ -4,8 +4,7 @@ class CreateJokes < ActiveRecord::Migration[6.0]
       t.string :topic
       t.string :punchline
       t.string :body
-      t.string :notes
-      t.boolean :hit 
+      t.string :notes    
       t.timestamps
     end
   end

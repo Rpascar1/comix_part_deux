@@ -3,7 +3,6 @@ class CreateClubs < ActiveRecord::Migration[6.0]
     create_table :clubs do |t|
       t.string :name
       t.string :address
-      t.string :type_clean_dirty
       t.timestamps
     end
   end
