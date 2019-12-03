@@ -1,15 +1,16 @@
 class Comedian < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-   validates :name, presence: true
-    validates :username, presence: true
+   # validates :name, presence: true
+   #  validates :username, presence: true
 
 
     devise :database_authenticatable, :registerable,
            :recoverable, :rememberable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
 
-           has_many :comedian_sets
-           has_many :jokes, through: :comedian_sets
+
+           # has_many :jokes
+           has_many :jokes, dependent: :destroy
            has_many :shows
            has_many :clubs, through: :shows
 

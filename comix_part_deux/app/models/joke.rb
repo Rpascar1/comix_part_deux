@@ -3,5 +3,5 @@ class Joke < ApplicationRecord
   validates :punchline, presence: true
   validates :body, presence: true
 
-  belongs_to :comedian_set
+  belongs_to :comedian
 end

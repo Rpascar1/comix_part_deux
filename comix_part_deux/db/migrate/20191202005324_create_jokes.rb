@@ -4,7 +4,7 @@ class CreateJokes < ActiveRecord::Migration[6.0]
       t.string :topic
       t.string :punchline
       t.string :body
-      t.string :notes    
+      t.references :comedian, index: true, foreign_key: true
       t.timestamps
     end
   end

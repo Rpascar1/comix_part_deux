@@ -19,20 +19,12 @@ ActiveRecord::Schema.define(version: 2019_12_02_044803) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "comedian_sets", force: :cascade do |t|
-    t.string "name"
-    t.string "length"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "comedians", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "username"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "provider"
@@ -47,17 +39,26 @@ ActiveRecord::Schema.define(version: 2019_12_02_044803) do
     t.string "topic"
     t.string "punchline"
     t.string "body"
-    t.string "notes"
+    t.integer "comedian_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["comedian_id"], name: "index_jokes_on_comedian_id"
   end
 
   create_table "shows", force: :cascade do |t|
     t.datetime "date"
     t.datetime "start_time"
     t.datetime "end_time"
+    t.integer "tickets"
+    t.integer "club_id"
+    t.integer "comedian_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["club_id"], name: "index_shows_on_club_id"
+    t.index ["comedian_id"], name: "index_shows_on_comedian_id"
   end
 
+  add_foreign_key "jokes", "comedians"
+  add_foreign_key "shows", "clubs"
+  add_foreign_key "shows", "comedians"
 end
